@@ -37,7 +37,8 @@ Options, with their defaults:
   minDepth: 0,
   maxDepth: undefined,
   selector: '*',
-  attributes: false
+  attributes: false,
+  classNames: false
 }
 ```
 
@@ -51,6 +52,8 @@ Options, with their defaults:
   the example above.)
 - `attributes` flag determines whether or not to print attributes after the
   element name (e.g., `img[class="bray" src="img/donkey.jpg"]`)
+- `classNames` flag determines whether or not to print class names, e.g.,
+  `div.container`.
 
 
 # Thanks
