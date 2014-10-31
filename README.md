@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/anandthakker/html-outline.svg?branch=master)](https://travis-ci.org/anandthakker/html-outline)
+
 html-outline
 ============
 
