@@ -3,6 +3,9 @@
   "version": "0.0.4",
   "description": "streaming transform html to a plaintext DOM outline.",
   "main": "index.js",
+  "bin": {
+    "html-outline": "index.js"
+  },
   "scripts": {
     "test": "tape test/*.js"
   },

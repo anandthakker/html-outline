@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var trumpet = require('trumpet');
 var through = require('through2');
 var duplexer = require('duplexer2');
