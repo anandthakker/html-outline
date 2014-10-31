@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/anandthakker/html-outline/issues"
   },
-  "homepage": "https://github.com/anandthakker/html-outline"
+  "homepage": "https://github.com/anandthakker/html-outline",
+  "dependencies": {
+    "duplexer2": "0.0.2",
+    "through2": "^0.6.3",
+    "trumpet": "^1.7.0"
+  },
+  "devDependencies": {
+    "concat-stream": "^1.4.6",
+    "tape": "^3.0.1"
+  }
 }
