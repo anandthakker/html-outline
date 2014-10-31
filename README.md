@@ -9,12 +9,28 @@ streaming transform html to a plaintext DOM outline.
 ```javascript
 var outline = require('html-outline');
 
-fs.createReadStream('your.html').pipe(outline(opts)).pipe(process.stdout);
+var strm = outline({indent: '..'});
+strm.pipe(process.stdout);
+
+strm.write('<html><body><div><p><img></p><p></p><ul><li></li></ul></div></body></html>')
 ```
+
+Outputs:
+```
+html
+..body
+....div
+......p
+........img
+......p
+......ul
+........li
+```
+
 
 ## Options
 
-Example `opts`, with the defaults shown:
+Options, with their defaults:
 ```javascript
 {
   indent: '  ',
