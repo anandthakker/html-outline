@@ -48,3 +48,21 @@ test('select', function(t) {
     t.equal(data.toString(), 'div\n  p\n  img\ndiv\n  p\n  img\ndiv\n  p\n  img\n');
   }));
 })
+
+test('attributes', function(t) {
+  t.plan(1);
+  fs.createReadStream(__dirname + '/simple.html')
+  .pipe(outline({select: 'img', attributes: true}))
+  .pipe(concat(function(data) {
+    t.equal(data.toString(), 'img[src="/img/donkey.jpg" alt="donkey"]\nimg[src="/img/penguin.jpg" alt="penguin"]\nimg[src="/img/whale.jpg" alt="whale"]\n');
+  }));
+})
+
+test('class names', function(t) {
+  t.plan(1);
+  fs.createReadStream(__dirname + '/simple.html')
+  .pipe(outline({classNames: true}))
+  .pipe(concat(function(data) {
+    t.equal(data.toString(), 'html\n  body\n    div.donkey\n      p.description\n      img\n    div.penguin\n      p.description\n      img\n    div.whale\n      p.description\n      img\n');
+  }));
+})

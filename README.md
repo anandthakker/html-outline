@@ -36,7 +36,8 @@ Options, with their defaults:
   indent: '  ',
   minDepth: 0,
   maxDepth: undefined,
-  selector: '*'
+  selector: '*',
+  attributes: false
 }
 ```
 
@@ -48,6 +49,8 @@ Options, with their defaults:
   selector(s) and all of their children (up to `maxDepth`) will be included. 
   (So, e.g., `{minDepth: 2}` and `{selector: 'div'}` would do the same thing in 
   the example above.)
+- `attributes` flag determines whether or not to print attributes after the
+  element name (e.g., `img[class="bray" src="img/donkey.jpg"]`)
 
 
 # Thanks

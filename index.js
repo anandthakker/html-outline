@@ -7,7 +7,9 @@ var defaults = {
   indent: '  ',
   minDepth: 0,
   maxDepth: undefined,
-  select: '*'
+  select: '*',
+  attributes: false,
+  classNames: false
 }
 
 module.exports = function outline(opts) {
@@ -33,20 +35,36 @@ module.exports = function outline(opts) {
       return;
     }
 
+    var stream = elem.createStream();
+
     if(state.depth >= opts.minDepth) {
       var tabs = new Array(1 + state.depth - opts.minDepth).join(opts.indent);
-      out.write(tabs + elem.name + '\n');
+      elem.getAttributes(function(attrs) {
+        out.write(tabs);
+        out.write(elem.name);
+        if(opts.classNames && 'class' in attrs) {
+          out.write('.' + attrs.class)
+        }
+        if(opts.attributes && Object.keys(attrs).length > 0) {
+          out.write('[');
+          out.write(Object.keys(attrs).map(function(attrName) {
+            return attrName + '="' + attrs[attrName] + '"';
+          }).join(' '))
+          out.write(']');
+        }
+        out.write('\n');
+      });
     }
-
+    
     /* track depth */
     state.depth++;
-    var stream = elem.createStream();
     stream.pipe(through.obj(write, end)).pipe(stream);
     function write(chunk, enc, cb) { cb(null, chunk); }
     function end(cb) {
       state.depth--;
       cb();
     }
+
   });
   
   tr.on('end', out.end.bind(out));
