@@ -6,7 +6,8 @@ var duplexer = require('duplexer2');
 var defaults = {
   indent: '  ',
   minDepth: 0,
-  maxDepth: undefined
+  maxDepth: undefined,
+  select: '*'
 }
 
 module.exports = function outline(opts) {
@@ -16,12 +17,18 @@ module.exports = function outline(opts) {
     opts[opt] = defaults[opt];
   }
   
+  
+  if(Array.isArray(opts.select)) {
+    opts.select = ':any(' + opts.select.join(',') + ')';
+  }
+  opts.select = '*:any('+ opts.select + ', ' + opts.select + ' *)'
+  
   var tr = trumpet();
   var out = through.obj();
 
   var state = { depth: 0 }
   
-  tr.selectAll('*', function(elem) {
+  tr.selectAll(opts.select, function(elem) {
     if(opts.maxDepth && state.depth > opts.maxDepth) {
       return;
     }

@@ -39,3 +39,12 @@ test('minDepth', function(t) {
     t.equal(data.toString(), 'div\n  p\n  img\ndiv\n  p\n  img\ndiv\n  p\n  img\n');
   }));
 })
+
+test('select', function(t) {
+  t.plan(1);
+  fs.createReadStream(__dirname + '/simple.html')
+  .pipe(outline({select: 'div'}))
+  .pipe(concat(function(data) {
+    t.equal(data.toString(), 'div\n  p\n  img\ndiv\n  p\n  img\ndiv\n  p\n  img\n');
+  }));
+})
