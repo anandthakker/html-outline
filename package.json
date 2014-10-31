@@ -1,0 +1,19 @@
+{
+  "name": "html-outline",
+  "version": "0.0.0",
+  "description": "streaming transform html to a plaintext DOM outline.",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anandthakker/html-outline.git"
+  },
+  "author": "Anand Thakker <vestibule@anandthakker.net> (http://anandthakker.net/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anandthakker/html-outline/issues"
+  },
+  "homepage": "https://github.com/anandthakker/html-outline"
+}
