@@ -54,6 +54,8 @@ Options, with their defaults:
   element name (e.g., `img[class="bray" src="img/donkey.jpg"]`)
 - `classNames` flag determines whether or not to print class names, e.g.,
   `div.container`.
+  
+Note: these are all also available as command line options: `--classNames=true`,etc.
 
 
 # Thanks

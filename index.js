@@ -2,17 +2,20 @@ var trumpet = require('trumpet');
 var through = require('through2');
 var duplexer = require('duplexer2');
 
+var argv = require('yargs').argv;
 
 var defaults = {
-  indent: '  ',
-  minDepth: 0,
-  maxDepth: undefined,
-  select: '*',
-  attributes: false,
-  classNames: false
+  indent: argv.indent || '  ',
+  minDepth: argv.minDepth || 0,
+  maxDepth: argv.maxDepth || undefined,
+  select: argv.select || '*',
+  attributes: argv.attributes || false,
+  classNames: argv.classNames || false
 }
 
-module.exports = function outline(opts) {
+module.exports = outline;
+
+function outline(opts) {
   opts = opts || {}
   for(opt in defaults) {
     if(opt in opts) continue;
@@ -72,4 +75,9 @@ module.exports = function outline(opts) {
   
   return duplexer(tr, out);
   
+}
+
+
+if(require.main === module) {
+  process.stdin.pipe(outline()).pipe(process.stdout);
 }
