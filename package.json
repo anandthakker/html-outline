@@ -1,6 +1,6 @@
 {
   "name": "html-outline",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "streaming transform html to a plaintext DOM outline.",
   "main": "index.js",
   "bin": {
